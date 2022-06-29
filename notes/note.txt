@@ -45,7 +45,7 @@ Mező típusok:
 PDO:
   Külön kezeli a bejövő paramétereket a lekérdezéstől, automatikusan véd a formon keresztüli támadásoktól.
   https://www.php.net/manual/en/book.pdo.php
-  https://devjunky.com/PHP-OOP-Database-Class-Example/ - kapcsolta oop
+  https://devjunky.com/PHP-OOP-Database-Class-Example/ - kapcsolat oop
   bindParam & bindValue:
     bindValue
     	A bind létrehozásának pillanatában a változó aktuális értékét adja át. Ha az execute előtt módosul még az adott változó, azt nem fogja figyelembe venni. Érték szerint ad át.
