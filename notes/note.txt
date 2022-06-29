@@ -1,0 +1,65 @@
+Sample data:
+  https://www.generatedata.com/
+
+Fogalmak:
+  SHOW VARIABLES LIKE "%version%"
+  	• adatbázis adatok, példul milyen verziójú és típusú az adatbázis
+  	• ha azonoskörnyezetet szeretnénk kialakítani, például egy virtuális gépen fontos lehet
+
+  SELECT @@sql_mode
+  	https://stackoverflow.com/questions/23921117/disable-only-full-group-by
+
+  EXPLAIN
+
+  https://www.php.net/manual/en/book.mysqli.php
+
+  https://devjunky.com/Creating-a-MySqli-Database-Class-in-PHP/ - kapcsolat oop
+
+  ODBC mező - `odbc` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  MSQLI_STORE_RESULT:
+  	http://www.sze.hu/~hatwagnf/php/het05.pdf
+  	https://www.php.net/manual/en/mysqli.query.php
+
+  INSERT_IGNORE_INTO:
+  	https://www.mysqltutorial.org/mysql-insert-ignore/
+
+  SET @ -- mindg egy session idejéig él és globális
+  	https://dev.mysql.com/doc/refman/5.7/en/stored-program-variables.html
+  	https://dev.mysql.com/doc/refman/5.7/en/set-variable.html
+
+  sysdate() - aktuális date és time
+
+Prepare / Execute
+  https://www.mysqltutorial.org/mysql-prepared-statement.aspx
+  SELECT MÁSKÉPP:
+  SET @mlsz = 408149172;
+  SET @Nev = (SELECT `gy`.`db_table` FROM gsm.`munkalap` m LEFT JOIN `gsm`.`gyartok` `gy` ON gy.id = m.id_gyarto WHERE m.munkalapszam = @mlsz LIMIT 0,1);
+  SET @Tablanev = CONCAT('select s.vasarlas_datum from ', @Nev, ' s where s.munkalapszam = ', @mlsz);
+  PREPARE stmt1 FROM @Tablanev;
+  EXECUTE stmt1;
+
+Mező típusok:
+  Varchar - szöveg, megadható, hogy maximum milyen hosszú legyen, de ha nem tölti ki a hosszúságot kevesebb helyet foglal.
+
+PDO:
+  Külön kezeli a bejövő paramétereket a lekérdezéstől, automatikusan véd a formon keresztüli támadásoktól.
+  https://www.php.net/manual/en/book.pdo.php
+  https://devjunky.com/PHP-OOP-Database-Class-Example/ - kapcsolta oop
+  bindParam & bindValue:
+    bindValue
+    	A bind létrehozásának pillanatában a változó aktuális értékét adja át. Ha az execute előtt módosul még az adott változó, azt nem fogja figyelembe venni. Érték szerint ad át.
+    bindParam
+    	A bind létrehozásaor a változó helyét adja át, így az execute pillanatában érvényes értékkel dolgozik.
+    https://stackoverflow.com/questions/1179874/what-is-the-difference-between-bindparam-and-bindvalue
+  setAttribute:
+    https://www.php.net/manual/en/pdo.setattribute.php
+    PDO::ATTR_PERSISTENT
+    	• https://www.php.net/manual/en/pdo.connections.php
+    	• https://stackoverflow.com/questions/23432948/fully-understanding-pdo-attr-persistent
+    	• https://www.php.net/manual/en/features.persistent-connections.php
+    PDO::ATTR_ERRMODE
+    	• silent
+    	• warning
+    	• Exception
+
